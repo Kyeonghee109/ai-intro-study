@@ -237,7 +237,7 @@ addSession({
     }
   ],
   "terms": [
-    { "en": "dimensionality", "ko": "차원", "def": "데이터 포인트 하나를 이루는 피처의 개수예요.", "def_en": "Dimensionality is the number of features in a dataset.", "source": "Dimensionality Reduction" },
+    { "en": "dimensionality", "ko": "차원", "def": "데이터 포인트 하나를 이루는 피처의 개수예요.", "def_en": "number of features in a dataset", "source": "Dimensionality Reduction" },
     { "en": "Curse of dimensionality", "ko": "차원의 저주", "def": "차원이 높아질수록 거리 구분, 계산, 시각화가 어려워지는 문제예요.", "def_en": "", "source": "Dimensionality Reduction" },
     { "en": "Dimensionality reduction", "ko": "차원 축소", "def": "데이터의 구조와 의미를 지키면서 차원을 줄이는 방법이에요.", "def_en": "", "source": "Dimensionality Reduction" },
     { "en": "Feature selection", "ko": "피처 선택", "def": "중요한 피처 일부만 골라서 차원을 줄여요.", "def_en": "", "source": "Dimensionality Reduction" },
