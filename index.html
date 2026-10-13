@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI융합입문 학습노트</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html">AI융합입문 <span>학습노트</span></a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>주차별 공부</h1>
+      <p class="muted">26-1 AI융합입문 수업 자료를 정리한 개인 학습 사이트</p>
+      <div id="overall" class="overall"></div>
+    </section>
+
+    <section>
+      <label class="search">
+        <span class="sr-only">전체 주차 검색</span>
+        <input id="search" type="search" placeholder="키워드 검색 (예: 경사, pbest, 교차)" autocomplete="off">
+      </label>
+      <div id="results"></div>
+    </section>
+
+    <section id="weeks" class="week-list"></section>
+
+    <section class="tools">
+      <a class="btn" href="study.html?mode=wrong">전체 틀린 문제 다시 풀기</a>
+      <button id="reset" class="btn ghost" type="button">진행도 초기화</button>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
