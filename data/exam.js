@@ -1,5 +1,6 @@
 // 중간고사 모의고사 (10/23 지필, 객관식 25문항)
 // 카테고리 번호와 문항 수는 교수님이 알려 준 시험 범위를 따른다.
+// 수업 자료가 영어인 차시(01-2, 02-1, 04-1, 05-1, 06-1, 07-1)는 문제·보기를 영어로, 한국어 자료(04-2, 06-2)는 한국어로 쓴다. 해설은 모두 한국어.
 var EXAM_CATS = [
   { no: 1, title: '데이터과학의 이해', n: 3 },
   { no: 2, title: '탐색적 데이터 분석과 시각화의 이해', n: 3 },
@@ -15,31 +16,31 @@ var EXAM_CATS = [
 
 var EXAM = [
   // ① 데이터과학의 이해
-  { id: 'exam-q01', cat: 1, q: '데이터 과학에 대한 설명으로 가장 알맞은 것은?', choices: ['빅데이터에서 행동으로 옮길 수 있는 통찰을 뽑아내는 과정', '지능적인 컴퓨터 프로그램을 만드는 과학과 공학', '메모리 용량이 18~24개월마다 2배가 된다는 법칙', '데이터를 사람이 쓴 규칙으로만 처리하는 방법'], answer: 0, explain: '두 번째 보기는 매카시의 AI 정의, 세 번째는 무어의 법칙이에요.', source: '01-2 데이터과학의 이해' },
-  { id: 'exam-q02', cat: 1, q: '존 스노우의 콜레라 지도 사례에 대한 설명으로 옳지 않은 것은?', choices: ['나쁜 냄새가 콜레라의 원인임을 데이터로 증명했다', '1854년 런던 소호의 사망자를 지도에 표시했다', '오염된 식수를 원인으로 의심했다', '지도로 당국을 설득해 브로드 가 펌프 손잡이를 떼어 냈다'], answer: 0, explain: '나쁜 냄새가 원인이라는 건 당시의 믿음이었고, 스노우는 오염된 식수를 의심했어요.', source: '01-2 데이터과학의 이해' },
-  { id: 'exam-q03', cat: 1, q: '아이스크림 판매량과 익사 사고 수가 함께 늘었다. 올바른 해석은?', choices: ['함께 움직인다고 해서 한쪽이 다른 쪽의 원인이라고 할 수 없다', '아이스크림이 익사 사고의 원인이다', '익사 사고가 아이스크림 판매를 늘린다', '두 변수는 아무 관계가 없다'], answer: 0, explain: '상관관계는 인과관계가 아니에요. 더운 날씨 같은 다른 요인이 둘 다 늘렸을 수 있어요.', source: '01-2 상관관계와 인과관계' },
+  { id: 'exam-q01', cat: 1, q: "According to the lecture, Data Science is a process that extracts what from Big Data?", choices: ["Actionable Insight", "Raw Data", "Moore's law", "Expert Systems"], answer: 0, explain: '두 번째 보기는 매카시의 AI 정의, 세 번째는 무어의 법칙이에요.', source: '01-2 데이터과학의 이해' },
+  { id: 'exam-q02', cat: 1, q: "In John Snow's cholera Spot Map, which statement is NOT correct?", choices: ["It proved that bad smells (Miasma theory) caused cholera", "It marked cholera deaths in Soho, London, in 1854", "Snow suspected contaminated drinking water", "The map persuaded officials to remove the Broad Street pump handle"], answer: 0, explain: '나쁜 냄새가 원인이라는 건 당시의 믿음이었고, 스노우는 오염된 식수를 의심했어요.', source: '01-2 데이터과학의 이해' },
+  { id: 'exam-q03', cat: 1, q: "Two variables move together. What can we conclude?", choices: ["Correlation alone does not show causality", "One variable must be the cause of the other", "The variables have no relationship", "Causality is always shown by a Spot Map"], answer: 0, explain: '함께 움직인다고 해서 한쪽이 다른 쪽의 원인이라는 뜻은 아니에요.', source: '01-2 상관관계와 인과관계' },
 
   // ② 탐색적 데이터 분석과 시각화
-  { id: 'exam-q04', cat: 2, q: '막대그래프와 히스토그램의 차이로 옳은 것은?', choices: ['막대그래프는 범주형 변수, 히스토그램은 수치형 변수의 분포를 보여 준다', '막대그래프는 시간에 따른 변화, 히스토그램은 두 변수의 관계를 보여 준다', '둘은 다루는 변수가 같고 색만 다르다', '히스토그램은 범주형 변수에만 쓴다'], answer: 0, explain: '막대 모양은 같아도 다루는 변수가 달라요. 시간 변화는 선 그래프, 두 수치형 변수의 관계는 산점도예요.', source: '05-1 막대그래프와 히스토그램' },
-  { id: 'exam-q05', cat: 2, q: '두 수치형 변수의 관계(방향, 퍼짐, 예외)를 볼 때 가장 알맞은 그래프는?', choices: ['산점도', '상자그림', '막대그래프', '파이 차트'], answer: 0, explain: '산점도에서는 점 하나가 관측치 하나예요.', source: '05-1 산점도' },
-  { id: 'exam-q06', cat: 2, q: '막대그래프의 세로축을 0이 아닌 값에서 시작하면 생기는 문제는?', choices: ['차이가 실제보다 커 보여 길이를 정직하게 비교할 수 없다', '막대가 그려지지 않는다', '평균이 바뀐다', '이상치가 사라진다'], answer: 0, explain: '막대그래프는 0에서 시작하는 축이라야 길이를 정직하게 비교할 수 있어요.', source: '05-1 축이 주는 인상' },
+  { id: 'exam-q04', cat: 2, q: "What is the difference between a Bar chart and a Histogram?", choices: ["A bar chart shows a Categorical variable; a histogram shows the distribution of a Numerical variable", "A bar chart shows change over time; a histogram shows the relationship of two variables", "They use the same kind of variable and only differ in color", "A histogram is used only for Nominal variables"], answer: 0, explain: '막대 모양은 같아도 다루는 변수가 달라요. 시간 변화는 선 그래프, 두 수치형 변수의 관계는 산점도예요.', source: '05-1 막대그래프와 히스토그램' },
+  { id: 'exam-q05', cat: 2, q: "Which graph best shows the Direction, Spread, and Exceptions between two Numerical variables?", choices: ["Scatterplot", "Boxplot", "Bar chart", "Line graph"], answer: 0, explain: '산점도에서는 점 하나가 관측치 하나예요.', source: '05-1 산점도' },
+  { id: 'exam-q06', cat: 2, q: "What problem does a Truncated bar axis (no Zero baseline) cause?", choices: ["Differences look bigger than they are, so bar lengths cannot be compared honestly", "The bars cannot be drawn", "The Mean changes", "Outliers disappear"], answer: 0, explain: '막대그래프는 0에서 시작하는 축이라야 길이를 정직하게 비교할 수 있어요.', source: '05-1 축이 주는 인상' },
 
   // ③ 인공지능의 이해
-  { id: 'exam-q07', cat: 3, q: '머신러닝과 딥러닝의 관계로 옳은 것은?', choices: ['딥러닝은 머신러닝 중 여러 층 신경망을 쓰는 분야다', '머신러닝은 딥러닝의 한 분야다', '둘은 서로 관계없는 분야다', '딥러닝은 사람이 쓴 규칙으로만 동작한다'], answer: 0, explain: '머신러닝은 경험으로 나아지는 알고리즘이고, 딥러닝은 그중 여러 층 신경망을 써요.', source: '02-1 머신러닝과 딥러닝' },
-  { id: 'exam-q08', cat: 3, q: '현재 쓰이는 AI(이 수업의 딥러닝 모델 포함)는 능력에 따른 분류에서 대부분 무엇에 해당하나?', choices: ['좁은 AI', '일반 AI', '초지능 AI', '자기 인식 AI'], answer: 0, explain: '지금 쓰이는 AI는 거의 다 정해진 일을 잘하는 좁은 AI예요.', source: '02-1 능력에 따른 AI 종류' },
-  { id: 'exam-q09', cat: 3, q: '정밀도(precision)를 구하는 식은?', choices: ['TP / (TP + FP)', 'TP / (TP + FN)', '(TP + TN) / 전체', 'TN / (TN + FP)'], answer: 0, explain: '재현율은 TP/(TP+FN), 정확도는 맞힌 예측 전체 비율이에요.', source: '02-1 모델 평가' },
-  { id: 'exam-q10', cat: 3, q: '트랜스포머의 셀프 어텐션에 대한 설명으로 옳은 것은?', choices: ['모든 토큰이 다른 모든 토큰을 보고 무엇이 중요한지 배운다', '토큰을 하나씩 순서대로 순환하며 처리한다', '이미지의 국소 특징을 풀링으로 잡는다', '위치 정보가 필요 없다'], answer: 0, explain: 'Query·Key·Value로 어텐션 점수를 계산하고, 순서 정보는 위치 인코딩으로 넣어요.', source: '02-1 트랜스포머와 셀프 어텐션' },
+  { id: 'exam-q07', cat: 3, q: "Which statement about Machine Learning and Deep learning is correct?", choices: ["Deep learning is a part of Machine Learning that uses multi-layer neural networks", "Machine Learning is a part of Deep learning", "They are unrelated fields", "Deep learning works only with hand-written rules"], answer: 0, explain: '머신러닝은 경험으로 나아지는 알고리즘이고, 딥러닝은 그중 여러 층 신경망을 써요.', source: '02-1 머신러닝과 딥러닝' },
+  { id: 'exam-q08', cat: 3, q: "Almost all AI used today, including the deep learning models in this course, is which type?", choices: ["Narrow AI (ANI)", "General AI (AGI)", "Super AI (ASI)", "Self-Aware"], answer: 0, explain: '지금 쓰이는 AI는 거의 다 정해진 일을 잘하는 좁은 AI예요.', source: '02-1 능력에 따른 AI 종류' },
+  { id: 'exam-q09', cat: 3, q: "Which formula gives Precision?", choices: ["TP / (TP + FP)", "TP / (TP + FN)", "(TP + TN) / total", "TN / (TN + FP)"], answer: 0, explain: '재현율은 TP/(TP+FN), 정확도는 맞힌 예측 전체 비율이에요.', source: '02-1 모델 평가' },
+  { id: 'exam-q10', cat: 3, q: "Which statement about Self-Attention in Transformers is correct?", choices: ["Every token looks at every other token to learn what is important", "Tokens are processed one by one in a recurrent loop", "It finds local features with pooling", "Positional encoding is not needed"], answer: 0, explain: 'Query·Key·Value로 어텐션 점수를 계산하고, 순서 정보는 위치 인코딩으로 넣어요.', source: '02-1 트랜스포머와 셀프 어텐션' },
 
   // ④ 경사하강법
-  { id: 'exam-q11', cat: 4, q: '경사하강법은 변수를 어느 방향으로 움직이나?', choices: ['경사의 반대 방향', '경사와 같은 방향', '무작위 방향', '항상 0을 향하는 방향'], answer: 0, explain: '비용을 줄이려고 경사의 반대 방향으로 조금씩 움직여요.', source: '04-1 경사하강법' },
-  { id: 'exam-q12', cat: 4, q: '경사하강법에서 한 번 업데이트할 때 실제로 움직이는 양을 정하는 것은?', choices: ['스텝 크기(학습률)와 경사의 크기 둘 다', '스텝 크기만', '경사의 크기만', '적합도'], answer: 0, explain: '움직이는 양은 스텝 크기 × 경사라서 둘 다에 달려 있어요.', source: '04-1 스텝 크기' },
+  { id: 'exam-q11', cat: 4, q: "In gradient descent (GD), which way does a variable move in each update?", choices: ["Opposite to the gradient", "In the same direction as the gradient", "In a random direction", "Always toward zero"], answer: 0, explain: '비용을 줄이려고 경사의 반대 방향으로 조금씩 움직여요.', source: '04-1 경사하강법' },
+  { id: 'exam-q12', cat: 4, q: "Next value = current value − step size × gradient. What decides how far a variable actually moves?", choices: ["Both the step size and the gradient", "Only the step size", "Only the gradient", "The fitness"], answer: 0, explain: '움직이는 양은 스텝 크기 × 경사라서 둘 다에 달려 있어요.', source: '04-1 스텝 크기' },
 
   // ⑤ 유전자알고리듬
-  { id: 'exam-q13', cat: 5, q: '유전 알고리즘에서 다음 세대를 만드는 연산으로 묶인 것은?', choices: ['선택, 교차, 변이', '중심화, 투영, 정렬', '경사 계산, 업데이트, 평가', '속도 업데이트, 위치 업데이트, pbest 갱신'], answer: 0, explain: '부모를 고르고(선택) 섞고(교차) 바꿔서(변이) 다음 세대를 만들어요.', source: '04-1 선택·교차·변이' },
-  { id: 'exam-q14', cat: 5, q: '유전 알고리즘에 대한 설명으로 옳은 것은?', choices: ['도함수 없이 적합도만으로 후보를 평가한다', '후보 해를 하나만 두고 개선한다', '경사의 반대 방향으로 이동한다', '염색체 하나는 유전자 하나로만 이루어진다'], answer: 0, explain: 'GA는 후보 여러 개를 세대마다 진화시키고, 염색체는 유전자 여러 개로 이루어져요.', source: '04-1 유전 알고리즘 개요' },
+  { id: 'exam-q13', cat: 5, q: "In a genetic algorithm (GA), which operations create the next generation?", choices: ["selection, crossover, mutation", "centering, projection, sorting", "gradient, update, evaluation", "inertia term, cognitive term, social term"], answer: 0, explain: '부모를 고르고(선택) 섞고(교차) 바꿔서(변이) 다음 세대를 만들어요.', source: '04-1 선택·교차·변이' },
+  { id: 'exam-q14', cat: 5, q: "Which statement about a genetic algorithm (GA) is correct?", choices: ["It evaluates candidates by fitness without derivatives", "It improves only one candidate at a time", "It moves opposite to the gradient", "A chromosome has only one gene"], answer: 0, explain: 'GA는 후보 여러 개를 세대마다 진화시키고, 염색체는 유전자 여러 개로 이루어져요.', source: '04-1 유전 알고리즘 개요' },
 
   // ⑥ 입자군집최적화
-  { id: 'exam-q15', cat: 6, q: '입자 군집 최적화(PSO)에서 입자가 다음 움직임을 정할 때 참고하는 것은?', choices: ['자기 최고 위치(pbest)와 무리 전체의 최고 위치(gbest)', '목적함수의 도함수', '부모 두 개의 교차 결과', '공분산 행렬의 고유 벡터'], answer: 0, explain: '입자는 자기 경험과 무리 전체의 최고 기록을 함께 참고하고, 도함수는 쓰지 않아요.', source: '04-1 입자 군집 최적화' },
+  { id: 'exam-q15', cat: 6, q: "In particle swarm optimization (PSO), what does a particle use to decide its next velocity?", choices: ["Its personal best (pbest) and the global best (gbest) of the swarm", "The derivatives of the objective function", "Crossover of two parents", "Eigenvectors of a covariance matrix"], answer: 0, explain: '입자는 자기 경험과 무리 전체의 최고 기록을 함께 참고하고, 도함수는 쓰지 않아요.', source: '04-1 입자 군집 최적화' },
 
   // ⑦ 기술통계
   { id: 'exam-q16', cat: 7, q: '이상치에 가장 강건한 중심 지표는?', choices: ['중앙값', '평균', '범위', '분산'], answer: 0, explain: '중앙값은 가운데 값을 고르기 때문에 큰 값 하나에 덜 흔들려요.', source: '04-2 중앙값' },
@@ -50,12 +51,12 @@ var EXAM = [
   { id: 'exam-q19', cat: 8, q: '주성분 분석(PCA)에 대한 설명으로 옳은 것은?', choices: ['분산이 가장 큰 방향을 새 축으로 찾고, 주성분끼리는 서로 수직이다', '분산이 가장 작은 방향을 첫 주성분으로 고른다', '원래 피처 중 일부를 골라내는 피처 선택 방법이다', '차원을 줄여도 정보가 전혀 사라지지 않는다'], answer: 0, explain: 'PCA는 피처 추출 방법이고, 고유값이 큰 공분산 행렬의 고유 벡터부터 주성분으로 골라요.', source: '06-2 주성분 분석' },
 
   // ⑨ 분류
-  { id: 'exam-q20', cat: 9, q: '이진 로지스틱 회귀의 판정 순서로 옳은 것은?', choices: ['선형 점수 → 시그모이드 확률 → 임계값', '시그모이드 확률 → 선형 점수 → 임계값', '임계값 → 선형 점수 → 소프트맥스', '선형 점수 → 소프트맥스 → 원-핫'], answer: 0, explain: '이름에 회귀가 있지만 분류기예요. 점수 z를 시그모이드로 확률로 바꾸고 임계값으로 판정해요.', source: '07-1 이진 로지스틱 회귀' },
-  { id: 'exam-q21', cat: 9, q: '임계값을 낮춰 오경보(FP)만 늘었다. 어떤 변화가 생기나?', choices: ['정밀도는 떨어지고 재현율은 그대로다', '정밀도와 재현율이 모두 오른다', '재현율만 떨어진다', '정확도가 반드시 오른다'], answer: 0, explain: 'FP는 정밀도의 분모에만 들어가요. 재현율 식 TP/(TP+FN)에는 FP가 없어요.', source: '07-1 정밀도 · 재현율' },
-  { id: 'exam-q22', cat: 9, q: '결정 트리에서 분할 후보를 고르는 기준은?', choices: ['자식 노드 지니 불순도의 가중 평균을 더 많이 줄이는 분할', '훈련 데이터 수를 가장 많이 늘리는 분할', '특성 두 개 이상을 동시에 쓰는 분할', '무작위로 고른 분할'], answer: 0, explain: '분할마다 특성 하나만 써서 결정 영역이 직사각형이 돼요.', source: '07-1 지니 불순도' },
+  { id: 'exam-q20', cat: 9, q: "In binary logistic regression, what is the order of making a prediction?", choices: ["linear score → sigmoid probability → threshold", "sigmoid probability → linear score → threshold", "threshold → linear score → softmax", "linear score → softmax → one-hot encoding"], answer: 0, explain: '이름에 회귀가 있지만 분류기예요. 점수 z를 시그모이드로 확률로 바꾸고 임계값으로 판정해요.', source: '07-1 이진 로지스틱 회귀' },
+  { id: 'exam-q21', cat: 9, q: "The threshold is lowered and only false positives (FP) increase. What happens?", choices: ["Precision goes down and recall stays the same", "Both precision and recall go up", "Only recall goes down", "Accuracy always goes up"], answer: 0, explain: 'FP는 정밀도의 분모에만 들어가요. 재현율 식 TP/(TP+FN)에는 FP가 없어요.', source: '07-1 정밀도 · 재현율' },
+  { id: 'exam-q22', cat: 9, q: "How does a decision tree choose a split?", choices: ["It picks the split that lowers the weighted impurity (Gini impurity) of the child nodes the most", "It picks the split that adds the most training data", "It uses two or more features in one split", "It picks a random split"], answer: 0, explain: '분할마다 특성 하나만 써서 결정 영역이 직사각형이 돼요.', source: '07-1 지니 불순도' },
 
   // ⑩ 회귀
-  { id: 'exam-q23', cat: 10, q: '최소제곱법(OLS)이 잔차를 제곱해서 더하는 이유로 옳은 것은?', choices: ['양수·음수 오차가 서로 지워지지 않게 하려고', '큰 오차의 영향을 줄이려고', '계수를 모두 0으로 만들려고', '회귀선이 모든 점을 지나게 하려고'], answer: 0, explain: '제곱하면 부호가 사라지고, 오히려 크게 틀린 기록의 영향이 커져요.', source: '06-1 최소제곱법' },
-  { id: 'exam-q24', cat: 10, q: '다항 회귀에 대한 설명으로 옳은 것은?', choices: ['곡선을 그리지만 계수가 선형으로 들어가 선형 모델 계열이다', '파라미터가 지수 안에 들어가는 비선형 회귀다', '차수가 높을수록 과대적합 위험이 줄어든다', '클래스 레이블을 예측한다'], answer: 0, explain: '차수가 높을수록 곡선이 많이 휘어서 과대적합 위험이 커져요.', source: '06-1 다항 회귀' },
-  { id: 'exam-q25', cat: 10, q: '다항 회귀의 차수나 릿지 벌점 같은 설정을 고를 때 쓰는 데이터는?', choices: ['검증 데이터', '훈련 데이터', '테스트 데이터만', '전체 데이터를 한 번에'], answer: 0, explain: '따로 떼어 둔 검증 데이터로 후보를 비교해서 고르고, 테스트 데이터는 마지막 평가에 써요.', source: '06-1 검증 데이터' }
+  { id: 'exam-q23', cat: 10, q: "Why does ordinary least squares (OLS) use squared residuals?", choices: ["So early and late errors do not cancel each other out", "To reduce the effect of large errors", "To make all coefficients zero", "So the line passes through every point"], answer: 0, explain: '제곱하면 부호가 사라지고, 오히려 크게 틀린 기록의 영향이 커져요.', source: '06-1 최소제곱법' },
+  { id: 'exam-q24', cat: 10, q: "Which statement about polynomial regression is correct?", choices: ["The curve can bend, but it is still in the linear-model family", "Its parameter is inside an exponent, so it is nonlinear", "A higher polynomial degree lowers the risk of overfit", "It predicts a class label"], answer: 0, explain: '차수가 높을수록 곡선이 많이 휘어서 과대적합 위험이 커져요.', source: '06-1 다항 회귀' },
+  { id: 'exam-q25', cat: 10, q: "Which data is used to choose the polynomial degree or the ridge penalty?", choices: ["validation data", "training data", "only the test set", "all data at once"], answer: 0, explain: '따로 떼어 둔 검증 데이터로 후보를 비교해서 고르고, 테스트 데이터는 마지막 평가에 써요.', source: '06-1 검증 데이터' }
 ];
