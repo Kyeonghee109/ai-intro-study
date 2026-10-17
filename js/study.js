@@ -1,4 +1,4 @@
-// 공부 페이지: study.html?w=4&mode=cards|quiz|wrong
+// 공부 페이지: study.html?w=4&mode=cards|quiz|wrong|exam (exam = 중간고사 모의고사, 전체 주차만)
 // w가 없으면 전체 주차를 대상으로 한다.
 
 var weekParam = getParam('w');
@@ -18,14 +18,15 @@ loadWeeks(function () {
   }
 
   var label = weekParam ? targetWeeks[0].week + '주차' : '전체 주차';
-  document.getElementById('heading').textContent = label + ' 공부하기';
+  document.getElementById('heading').textContent = mode === 'exam' ? '중간고사 모의고사 (25문항)' : label + ' 공부하기';
   if (weekParam) {
     document.getElementById('crumb').innerHTML =
       '<a href="index.html">← 주차 목록</a> · <a href="week.html?w=' + weekParam + '">' + label + ' 요약</a>';
   }
   renderTabs();
 
-  if (mode === 'quiz') startQuiz(allQuestions());
+  if (mode === 'exam') startQuiz(EXAM);
+  else if (mode === 'quiz') startQuiz(allQuestions());
   else if (mode === 'wrong') startQuiz(wrongQuestions());
   else startCards();
 });
@@ -37,6 +38,7 @@ function pageUrl(m) {
 function renderTabs() {
   var wrongCount = wrongQuestions().length;
   var tabs = [['cards', '플래시카드'], ['quiz', '퀴즈'], ['wrong', '틀린 문제 (' + wrongCount + ')']];
+  if (!weekParam) tabs.push(['exam', '모의고사']);
   document.getElementById('tabs').innerHTML = tabs.map(function (t) {
     return '<a href="' + pageUrl(t[0]) + '"' + (t[0] === mode ? ' class="on"' : '') + '>' + t[1] + '</a>';
   }).join('');
@@ -126,6 +128,7 @@ function startQuiz(questions) {
   }
   var idx = 0;
   var score = 0;
+  var results = []; // 모의고사 카테고리별 채점용
 
   function draw() {
     var q = questions[idx];
@@ -134,6 +137,7 @@ function startQuiz(questions) {
     stage.innerHTML =
       '<p class="muted small">' + (idx + 1) + ' / ' + questions.length + ' · 맞힘 ' + score + '</p>' +
       '<article class="card quiz">' +
+        (q.cat ? '<p class="muted small">' + catLabel(q.cat) + '</p>' : '') +
         '<h3>' + esc(q.q) + '</h3>' +
         '<div class="choices">' + order.map(function (i, n) {
           return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> ' + esc(q.choices[i]) + '</button>';
@@ -149,6 +153,7 @@ function startQuiz(questions) {
   function answer(q, picked) {
     var ok = picked === q.answer;
     if (ok) score++;
+    results.push({ cat: q.cat, ok: ok });
     recordAnswer(q.id, ok);
     renderTabs();
 
@@ -176,6 +181,7 @@ function startQuiz(questions) {
     stage.innerHTML =
       '<article class="card center">' +
         '<h3>' + questions.length + '문제 중 ' + score + '문제 맞힘</h3>' +
+        (mode === 'exam' ? examBreakdown(results) : '') +
         '<div class="row center">' +
           '<a class="btn ghost" href="' + pageUrl(mode) + '">다시 풀기</a>' +
           (wrongLeft ? '<a class="btn" href="' + pageUrl('wrong') + '">틀린 문제만 (' + wrongLeft + ')</a>' : '') +
@@ -184,4 +190,20 @@ function startQuiz(questions) {
   }
 
   draw();
+}
+
+// ---- 모의고사 ----
+
+function catLabel(no) {
+  var c = EXAM_CATS.filter(function (c) { return c.no === no; })[0];
+  return '①②③④⑤⑥⑦⑧⑨⑩'.charAt(no - 1) + ' ' + esc(c.title);
+}
+
+function examBreakdown(results) {
+  return '<table class="breakdown"><tr><th>범위</th><th>맞힘</th></tr>' +
+    EXAM_CATS.map(function (c) {
+      var mine = results.filter(function (r) { return r.cat === c.no; });
+      var ok = mine.filter(function (r) { return r.ok; }).length;
+      return '<tr' + (ok < mine.length ? ' class="miss"' : '') + '><td>' + catLabel(c.no) + '</td><td>' + ok + ' / ' + mine.length + '</td></tr>';
+    }).join('') + '</table>';
 }

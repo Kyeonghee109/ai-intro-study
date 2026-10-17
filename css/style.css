@@ -293,3 +293,8 @@ figcaption { font-size: .8rem; color: var(--muted); }
 .session-head p:last-child { margin-bottom: 0; }
 .toc-session { margin: 10px 0 0; font-weight: 700; }
 .toc-session:first-of-type { margin-top: 4px; }
+
+/* 모의고사 범위별 결과 */
+.breakdown { margin: 12px auto; border-collapse: collapse; text-align: left; }
+.breakdown th, .breakdown td { padding: 4px 12px; border-bottom: 1px solid rgba(128,128,128,.25); }
+.breakdown tr.miss td { color: #c0392b; font-weight: 600; }
