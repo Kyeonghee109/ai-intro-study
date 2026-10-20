@@ -13,15 +13,15 @@ loadWeeks(function () {
     targetWeeks = WEEKS;
   }
   if (targetWeeks.length === 0) {
-    document.getElementById('stage').innerHTML = '<p>해당 주차가 없습니다.</p>';
+    document.getElementById('stage').innerHTML = '<p>해당 ' + COURSE.unit + '가 없습니다.</p>';
     return;
   }
 
-  var label = weekParam ? targetWeeks[0].week + '주차' : '전체 주차';
+  var label = weekParam ? targetWeeks[0].week + COURSE.unit : '전체 ' + COURSE.unit;
   document.getElementById('heading').textContent = mode === 'exam' ? '중간고사 모의고사 (25문항)' : label + ' 공부하기';
   if (weekParam) {
     document.getElementById('crumb').innerHTML =
-      '<a href="index.html">← 주차 목록</a> · <a href="week.html?w=' + weekParam + '">' + label + ' 요약</a>';
+      '<a href="index.html">← ' + COURSE.unit + ' 목록</a> · <a href="week.html?w=' + weekParam + '">' + label + ' 요약</a>';
   }
   renderTabs();
 
@@ -38,7 +38,7 @@ function pageUrl(m) {
 function renderTabs() {
   var wrongCount = wrongQuestions().length;
   var tabs = [['cards', '플래시카드'], ['quiz', '퀴즈'], ['wrong', '틀린 문제 (' + wrongCount + ')']];
-  if (!weekParam) tabs.push(['exam', '모의고사']);
+  if (!weekParam && typeof EXAM !== 'undefined') tabs.push(['exam', '모의고사']);
   document.getElementById('tabs').innerHTML = tabs.map(function (t) {
     return '<a href="' + pageUrl(t[0]) + '"' + (t[0] === mode ? ' class="on"' : '') + '>' + t[1] + '</a>';
   }).join('');
@@ -132,13 +132,35 @@ function startQuiz(questions) {
 
   function draw() {
     var q = questions[idx];
-    // 보기 순서를 섞되, 원래 번호(i)를 기억해 정답을 판정한다
-    var order = shuffle(q.choices.map(function (_, i) { return i; }));
-    stage.innerHTML =
-      '<p class="muted small">' + (idx + 1) + ' / ' + questions.length + ' · 맞힘 ' + score + '</p>' +
+    var head = '<p class="muted small">' + (idx + 1) + ' / ' + questions.length + ' · 맞힘 ' + score + '</p>' +
       '<article class="card quiz">' +
         (q.cat ? '<p class="muted small">' + catLabel(q.cat) + '</p>' : '') +
-        '<h3>' + esc(q.q) + '</h3>' +
+        (q.answers ? '<p class="muted small"><span class="tag">주관식</span></p>' : '') +
+        '<h3>' + esc(q.q) + '</h3>';
+
+    // 주관식: 답을 직접 써 본다 (answers = 정답으로 인정할 말 목록)
+    if (q.answers) {
+      stage.innerHTML = head +
+        '<form class="written" id="written">' +
+          '<input id="written-in" type="text" autocomplete="off" placeholder="답을 써 보세요">' +
+          '<button type="submit" class="btn">확인</button>' +
+        '</form>' +
+        '<div id="feedback"></div>' +
+      '</article>';
+      var input = document.getElementById('written-in');
+      input.focus();
+      document.getElementById('written').onsubmit = function (e) {
+        e.preventDefault();
+        input.disabled = true;
+        e.target.querySelector('button').disabled = true;
+        answer(q, isRight(input.value, q.answers), input.value);
+      };
+      return;
+    }
+
+    // 보기 순서를 섞되, 원래 번호(i)를 기억해 정답을 판정한다
+    var order = shuffle(q.choices.map(function (_, i) { return i; }));
+    stage.innerHTML = head +
         '<div class="choices">' + order.map(function (i, n) {
           return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> ' + esc(q.choices[i]) + '</button>';
         }).join('') + '</div>' +
@@ -150,8 +172,17 @@ function startQuiz(questions) {
     });
   }
 
-  function answer(q, picked) {
-    var ok = picked === q.answer;
+  // 띄어쓰기·문장부호·괄호 안 한자는 무시하고 비교한다
+  function norm(s) {
+    return String(s).replace(/\([^)]*\)/g, '').replace(/[\s.,·'"‘’“”!?~\-]/g, '').toLowerCase();
+  }
+  function isRight(text, answers) {
+    var t = norm(text);
+    return t !== '' && answers.some(function (a) { return norm(a) === t; });
+  }
+
+  function answer(q, picked, written) {
+    var ok = q.answers ? picked === true : picked === q.answer;
     if (ok) score++;
     results.push({ cat: q.cat, ok: ok });
     recordAnswer(q.id, ok);
@@ -165,11 +196,30 @@ function startQuiz(questions) {
     });
     var last = idx === questions.length - 1;
     document.getElementById('feedback').innerHTML =
-      '<div class="explain ' + (ok ? 'ok' : 'no') + '">' +
-        '<b>' + (ok ? '정답!' : '오답') + '</b> ' + esc(q.explain) +
+      '<div class="explain ' + (ok ? 'ok' : 'no') + '" id="explain">' +
+        '<b>' + (ok ? '정답!' : '오답') + '</b> ' +
+        (q.answers ? '정답: <b>' + esc(q.answers[0]) + '</b><br>' : '') +
+        esc(q.explain) +
         '<p class="src">출처: ' + esc(q.source) + '</p>' +
       '</div>' +
+      // 주관식은 표현이 조금 달라도 맞을 수 있어서 스스로 맞음 처리할 수 있게 한다
+      (q.answers && !ok && written && written.trim()
+        ? '<button type="button" class="btn ghost" id="selfok">내 답도 맞아요</button> '
+        : '') +
       '<button type="button" class="btn" id="next">' + (last ? '결과 보기' : '다음 문제 →') + '</button>';
+    var selfok = document.getElementById('selfok');
+    if (selfok) {
+      selfok.onclick = function () {
+        score++;
+        results[results.length - 1].ok = true;
+        recordAnswer(q.id, true);
+        renderTabs();
+        var box = document.getElementById('explain');
+        box.className = 'explain ok';
+        box.querySelector('b').textContent = '맞음 처리';
+        selfok.remove();
+      };
+    }
     document.getElementById('next').onclick = function () {
       if (last) finish();
       else { idx++; draw(); }

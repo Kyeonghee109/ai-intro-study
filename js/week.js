@@ -4,16 +4,16 @@ loadWeeks(function () {
   var page = document.getElementById('page');
   var w = findWeek(Number(getParam('w')));
   if (!w) {
-    page.innerHTML = '<p>해당 주차가 없습니다. <a href="index.html">목록으로</a></p>';
+    page.innerHTML = '<p>해당 ' + COURSE.unit + '가 없습니다. <a href="index.html">목록으로</a></p>';
     return;
   }
-  document.title = w.week + '주차 요약 · AI융합입문';
+  document.title = w.week + COURSE.unit + ' 요약 · ' + COURSE.name;
   markViewed(w.week);
 
   page.innerHTML =
-    '<p class="crumb"><a href="index.html">← 주차 목록</a></p>' +
+    '<p class="crumb"><a href="index.html">← ' + COURSE.unit + ' 목록</a></p>' +
     '<section class="hero">' +
-      '<p class="session">' + w.week + '주차</p>' +
+      '<p class="session">' + w.week + COURSE.unit + '</p>' +
       '<h1>' + w.sessions.map(function (ss) { return esc(ss.title); }).join(' · ') + '</h1>' +
       '<div class="links">' +
         '<a class="btn" href="study.html?w=' + w.week + '&mode=cards">플래시카드</a>' +
@@ -62,7 +62,7 @@ function renderSession(ss) {
       if (src.url) {
         return '<li><b>' + esc(src.title) + '</b><br><a href="' + esc(src.url) + '" target="_blank" rel="noopener">' + esc(src.url) + '</a></li>';
       }
-      return '<li><b>' + esc(src.title) + '</b><br><code>materials/week' + pad(ss.week) + '/' + esc(src.file) + '</code></li>';
+      return '<li><b>' + esc(src.title) + '</b><br><code>' + esc(src.path || 'materials/week' + pad(ss.week) + '/' + src.file) + '</code></li>';
     }).join('') + '</ol>' +
   '</section>';
 }
@@ -154,8 +154,11 @@ function renderCheck(groups) {
 function renderTerms(terms) {
   return '<details class="terms-box"><summary>용어 ' + terms.length + '개 펼치기</summary>' +
     '<dl class="terms">' + terms.map(function (t) {
-      return '<div><dt>' + enOrCheck(t.en) + ' <span class="muted">/ ' + esc(t.ko) + '</span></dt>' +
-        (t.def_en ? '<dd class="en-def">“' + esc(t.def_en) + '”</dd>' : '') +
-        '</div>';
+      var name = (t.en || !COURSE.hideNeedEn)
+        ? enOrCheck(t.en) + ' <span class="muted">/ ' + esc(t.ko) + '</span>'
+        : esc(t.ko);
+      // 영어 정의가 없는 과목은 한국어 설명을 보여 준다
+      var def = t.def_en ? '“' + esc(t.def_en) + '”' : (COURSE.hideNeedEn && t.def ? esc(t.def) : '');
+      return '<div><dt>' + name + '</dt>' + (def ? '<dd class="en-def">' + def + '</dd>' : '') + '</div>';
     }).join('') + '</dl></details>';
 }

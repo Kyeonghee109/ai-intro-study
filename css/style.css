@@ -298,3 +298,23 @@ figcaption { font-size: .8rem; color: var(--muted); }
 .breakdown { margin: 12px auto; border-collapse: collapse; text-align: left; }
 .breakdown th, .breakdown td { padding: 4px 12px; border-bottom: 1px solid rgba(128,128,128,.25); }
 .breakdown tr.miss td { color: #c0392b; font-weight: 600; }
+
+/* ---- 주관식 문제 ---- */
+.written { display: flex; gap: 8px; margin: 12px 0; }
+.written input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.written input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.tag:not(.ok):not(.warn) { background: var(--line); color: var(--text); }
+
+/* ---- 과목 바로가기 ---- */
+.courses { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.courses a { padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; text-decoration: none; }
+.courses a.on { background: var(--accent); border-color: var(--accent); color: var(--surface); }

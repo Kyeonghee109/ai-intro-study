@@ -2,6 +2,10 @@
 // 새 차시는 data/weekNN-S.js 파일만 추가하면 자동으로 불러온다. (예: week05-2.js = 5주차 2차시)
 // 같은 주차의 차시들은 WEEKS 안에서 하나로 묶인다.
 
+// 과목 정보: 과목 폴더의 html이 data.js보다 먼저 window.COURSE를 정한다.
+// 정하지 않으면 AI융합입문으로 동작한다.
+var COURSE = window.COURSE || { name: 'AI융합입문', unit: '주차', store: 'ai-intro-progress' };
+
 var MAX_WEEK = 16;
 var MAX_SESSION = 3;
 var SESSIONS = [];
@@ -75,7 +79,8 @@ function esc(text) {
 }
 
 // 영어 원문이 없는 용어는 "영어 확인 필요" 표시
-var NEED_EN = '<span class="tag warn">영어 확인 필요</span>';
+// 한국어로만 배우는 과목(COURSE.hideNeedEn)은 표시하지 않는다
+var NEED_EN = COURSE.hideNeedEn ? '' : '<span class="tag warn">영어 확인 필요</span>';
 
 function enOrCheck(en) {
   return en ? esc(en) : NEED_EN;
@@ -85,7 +90,7 @@ function enOrCheck(en) {
 // { viewed: { "4": true }, quiz: { "w04-q01": true, "w04-q02": false } }
 // quiz 값: 마지막으로 푼 결과 (true = 맞힘, false = 틀림)
 
-var STORE_KEY = 'ai-intro-progress';
+var STORE_KEY = COURSE.store;
 
 function loadProgress() {
   try {

@@ -7,7 +7,7 @@ loadWeeks(function () {
     renderResults(this.value.trim());
   });
   document.getElementById('reset').addEventListener('click', function () {
-    if (confirm('본 주차와 퀴즈 기록을 모두 지울까요?')) {
+    if (confirm('본 ' + COURSE.unit + '와 퀴즈 기록을 모두 지울까요?')) {
       resetProgress();
       renderWeeks();
       renderOverall();
@@ -18,7 +18,7 @@ loadWeeks(function () {
 function renderWeeks() {
   var box = document.getElementById('weeks');
   if (WEEKS.length === 0) {
-    box.innerHTML = '<p class="muted">data 폴더에 주차 파일이 없습니다.</p>';
+    box.innerHTML = '<p class="muted">data 폴더에 자료 파일이 없습니다.</p>';
     return;
   }
   var p = loadProgress();
@@ -28,7 +28,7 @@ function renderWeeks() {
     var seen = p.viewed[w.week];
     return '' +
       '<article class="week-card">' +
-        '<div class="week-num">' + w.week + '<small>주차</small></div>' +
+        '<div class="week-num">' + w.week + '<small>' + COURSE.unit + '</small></div>' +
         '<div class="week-body">' +
           (seen ? '<p class="session"><span class="tag ok">봤음</span></p>' : '') +
           w.sessions.map(function (ss) {
@@ -58,7 +58,7 @@ function renderOverall() {
     total += s.total;
   });
   document.getElementById('overall').innerHTML =
-    '<span><b>' + viewed + '</b> / ' + WEEKS.length + ' 주차 봤음</span>' +
+    '<span><b>' + viewed + '</b> / ' + WEEKS.length + ' ' + COURSE.unit + ' 봤음</span>' +
     '<span><b>' + correct + '</b> / ' + total + ' 문제 맞힘</span>';
 }
 

@@ -36,3 +36,9 @@
 ## 확인 필요 (`check`)
 18. `[{title, items}]` 구조이고, 소제목은 "내가 풀어 쓴 것 (교수님 표현과 비교해 보기) / 넣지 않은 것 / 사용 안내" 3개다.
 19. "없다"는 내용은 쓰지 않고, 겹치는 줄은 합친다.
+
+## 다른 과목 (과목 폴더)
+- 과목마다 폴더를 따로 둔다. 예: `christianity/` (기독교의 이해). 폴더 안에 `index.html`, `week.html`, `study.html`, `data/weekNN-S.js`가 있다.
+- 각 html은 `../js/data.js`보다 먼저 `window.COURSE = { name, unit, store, hideNeedEn }`를 정한다. `unit`은 화면에 쓰는 단위('주차' 또는 '강'), `store`는 진행도 저장 이름이다.
+- 주관식 문제는 `choices`/`answer` 대신 `answers: ["정답", "다른 인정 표현"]`을 쓴다. 띄어쓰기와 문장부호는 무시하고 비교한다.
+- PPT 빈칸이 비어 있어서 추정해 채운 곳은 카드의 '주의할 점'과 '확인 필요'에 "추정"으로 적는다.
