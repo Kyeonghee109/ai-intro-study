@@ -75,7 +75,14 @@ function esc(text) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    // [[단어]] = PPT 빈칸이었던 중요한 단어 → 형광펜 표시
+    .replace(/\[\[(.+?)\]\]/g, '<mark class="blank">$1</mark>');
+}
+
+// 형광펜 표시 없이 글자만 (퀴즈 문제·보기, 검색용)
+function plain(text) {
+  return String(text).replace(/\[\[(.+?)\]\]/g, '$1');
 }
 
 // 영어 원문이 없는 용어는 "영어 확인 필요" 표시

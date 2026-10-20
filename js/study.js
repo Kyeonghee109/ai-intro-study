@@ -136,7 +136,7 @@ function startQuiz(questions) {
       '<article class="card quiz">' +
         (q.cat ? '<p class="muted small">' + catLabel(q.cat) + '</p>' : '') +
         (q.answers ? '<p class="muted small"><span class="tag">주관식</span></p>' : '') +
-        '<h3>' + esc(q.q) + '</h3>';
+        '<h3>' + esc(plain(q.q)) + '</h3>';
 
     // 주관식: 답을 직접 써 본다 (answers = 정답으로 인정할 말 목록)
     if (q.answers) {
@@ -162,7 +162,7 @@ function startQuiz(questions) {
     var order = shuffle(q.choices.map(function (_, i) { return i; }));
     stage.innerHTML = head +
         '<div class="choices">' + order.map(function (i, n) {
-          return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> ' + esc(q.choices[i]) + '</button>';
+          return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> ' + esc(plain(q.choices[i])) + '</button>';
         }).join('') + '</div>' +
         '<div id="feedback"></div>' +
       '</article>';

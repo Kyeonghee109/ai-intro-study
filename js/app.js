@@ -119,6 +119,7 @@ function cardTexts(s) {
 }
 
 function highlight(text, query) {
+  text = plain(text);
   var i = text.toLowerCase().indexOf(query.toLowerCase());
   if (i === -1) return esc(text);
   return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + query.length)) + '</mark>' + esc(text.slice(i + query.length));

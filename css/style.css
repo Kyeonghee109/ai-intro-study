@@ -318,3 +318,12 @@ figcaption { font-size: .8rem; color: var(--muted); }
 .courses { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .courses a { padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; text-decoration: none; }
 .courses a.on { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+
+/* ---- PPT 빈칸 단어 형광펜 ---- */
+mark.blank {
+  background: #fde047;
+  color: #1a1a1a;
+  padding: 0 3px;
+  border-radius: 3px;
+  font-weight: 700;
+}
