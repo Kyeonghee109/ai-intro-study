@@ -319,11 +319,14 @@ figcaption { font-size: .8rem; color: var(--muted); }
 .courses a { padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; text-decoration: none; }
 .courses a.on { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 
-/* ---- PPT 빈칸 단어 형광펜 ---- */
+/* ---- PPT 빈칸 단어: 글자 아래쪽만 은은하게 긋는 형광펜 ---- */
 mark.blank {
-  background: #fde047;
-  color: #1a1a1a;
-  padding: 0 3px;
-  border-radius: 3px;
-  font-weight: 700;
+  --hl: rgba(250, 204, 21, .28);
+  background: linear-gradient(transparent 62%, var(--hl) 62%);
+  color: #b45309;
+  font-weight: 600;
+  padding: 0 1px;
+}
+@media (prefers-color-scheme: dark) {
+  mark.blank { --hl: rgba(250, 204, 21, .22); color: #fcd34d; }
 }
