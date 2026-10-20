@@ -1,4 +1,6 @@
 // 차시 데이터 불러오기 + 진행도 저장 + 공통 함수
+// 자료를 고치면 이 값을 바꾼다 (브라우저가 예전 파일을 쓰지 않게)
+var DATA_VERSION = '20261020';
 // 새 차시는 data/weekNN-S.js 파일만 추가하면 자동으로 불러온다. (예: week05-2.js = 5주차 2차시)
 // 같은 주차의 차시들은 WEEKS 안에서 하나로 묶인다.
 
@@ -35,7 +37,7 @@ function loadWeeks(done) {
   for (var i = 1; i <= MAX_WEEK; i++) {
     for (var j = 1; j <= MAX_SESSION; j++) {
       var s = document.createElement('script');
-      s.src = 'data/week' + pad(i) + '-' + j + '.js';
+      s.src = 'data/week' + pad(i) + '-' + j + '.js?v=' + DATA_VERSION;
       s.onload = finish;
       s.onerror = finish;
       document.head.appendChild(s);
