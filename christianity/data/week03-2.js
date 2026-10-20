@@ -135,7 +135,7 @@ addSession({
     },
     {
       "id": "why-immanence", "group": "g-immanence", "title": "왜 하나님을 만나게 하시고 모든 피조물을 보존하시나?",
-      "definition": "하나님이 [[전적으로 선하시기]] 때문이에요. (전선성, Omni-Benevolence)",
+      "definition": "하나님이 [[전적으로 선하시기]] 때문이에요. ([[전선성]], Omni-Benevolence)",
       "points": [ "악인을 포함한 만민에게 생명, 존재의 연속성, 그리고 피조세계의 [[모든 것을 값없이]] 허락해 주세요." ],
       "example": { "title": "근거 구절", "points": [
         "시 145:9: 여호와께서는 모든 것을 [[선대하시며]] 그 지으신 모든 것에 긍휼을 베푸시는도다",
