@@ -48,6 +48,7 @@ function renderSession(ss) {
       '<h2>' + esc(ss.title) + examTag(ss.session) + '</h2>' +
       (ss.lecturer ? '<p class="muted small">' + esc(ss.lecturer) + '</p>' : '') +
       '<p>' + esc(ss.intro) + '</p>' +
+      (ss.keypoints ? '<div class="keypoints"><p class="label">핵심 정리</p>' + renderList(ss.keypoints) + '</div>' : '') +
     '</header>' +
     ss.groups.map(function (g) {
       return partTitle(sid(ss, g.id), esc(g.title) + examTag(ss.session + '#' + g.id)) +

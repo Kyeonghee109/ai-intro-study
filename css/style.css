@@ -372,3 +372,8 @@ figcaption { font-size: 13px; color: var(--muted, #64748b); margin-top: 4px; }
   .timeline li { padding: 0 0 14px; text-align: left; }
   .tl-dot { left: -26px; margin-left: 0; top: 2px; }
 }
+
+/* 차시 핵심 정리 */
+.keypoints { margin-top: 14px; padding: 12px 16px 4px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 8px; }
+.keypoints .label { color: var(--accent); }
+.keypoints li { margin-bottom: 6px; }

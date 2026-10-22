@@ -3,6 +3,7 @@ addSession({
   "session": "06-1",
   "title": "회귀모델을 구축하고 데이터 예측하기",
   "intro": "숫자를 예측하는 회귀를 배워요. 직선 하나로 시작해서, 입력을 늘리고, 곡선으로 휘게 하고, 마지막엔 미래를 예측하는 곡선까지 살펴봐요.",
+  "keypoints": ["회귀는 입력과 숫자 결과의 관계를 배워서 숫자를 예측해요.", "잔차 = 기록 값 − 예측 값이고, 잔차 제곱합이 가장 작은 직선을 골라요(최소제곱법).", "새 입력이 기록 범위 안이면 보간, 밖이면 외삽이에요.", "곡선 특성을 너무 많이 넣으면 과대적합, 너무 적으면 과소적합이에요. 규제로 계수가 커지지 않게 막아요.", "차수·벌점 같은 설정은 따로 떼어 둔 검증 데이터로 골라요."],
   "sources": [
     { "index": "01", "title": "What Is Regression", "file": "01_what_is_regression.ipynb" },
     { "index": "02", "title": "Simple Linear Regression", "file": "02_simple_linear_regression.ipynb" },

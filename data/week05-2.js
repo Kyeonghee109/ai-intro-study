@@ -5,6 +5,7 @@ addSession({
   "lecturer": "최혜봉 교수",
   "title": "탐색적 데이터 분석과 시각화의 이해 II",
   "intro": "Tableau로 여러 차트를 한 화면에 모은 대시보드를 만들어요. Divvy 자전거 데이터로 시연을 보고, Gapminder 데이터로 직접 만들어 Tableau Public에 올려요.",
+  "keypoints": ["대시보드는 관련된 차트를 한 화면에 모아 탐색하는 공간이에요.", "Filter, Filter Action, Tooltip은 서로 다른 방식으로 탐색을 도와요.", "Filter Action은 한 차트에서 고른 값으로 다른 Worksheet도 함께 바뀌게 해요."],
   "sources": [
     { "index": "01", "title": "Creating Dashboard in Tableau (최혜봉, 40쪽)", "file": "Tableau_대시_보드_만들기_261002_v3.0.pdf" }
   ],

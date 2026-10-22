@@ -5,6 +5,7 @@ addSession({
   "lecturer": "박준수 교수",
   "title": "기술통계의 이해",
   "intro": "데이터의 중심(평균, 중앙값, 최빈값)과 퍼짐(범위, 편차, 분산, 표준 편차)을 수치로 나타내는 법을 배워요. 이상치를 찾는 두 방법, 상관계수, 분포의 모양(왜도, 첨도)도 살펴봐요.",
+  "keypoints": ["중심을 나타내는 값은 평균, 중앙값, 최빈값이고, 퍼짐을 나타내는 값은 범위, 분산, 표준 편차예요.", "표본 분산은 n이 아니라 n − 1로 나눠요.", "Z = (값 − 평균) ÷ 표준 편차. 평균에서 표준 편차 몇 배만큼 떨어졌는지예요.", "IQR = Q3 − Q1. 울타리 Q1 − 1.5×IQR, Q3 + 1.5×IQR 밖의 값은 이상치예요.", "상관계수는 −1~1 사이 값으로, '선형' 관계의 방향과 강도만 알려 줘요."],
   "sources": [
     { "index": "01", "title": "101 001 Descriptive Statistics (88분, 자동 자막 기준)", "url": "https://youtu.be/9bM65kxOwPA" },
     { "index": "02", "title": "101 002 Descriptive Statistics - Examples (16분, 자동 자막 기준)", "url": "https://youtu.be/86BDTsrtB_M" }

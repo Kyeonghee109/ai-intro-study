@@ -3,6 +3,7 @@ addSession({
   "session": "07-1",
   "title": "분류 모델을 구축하고 데이터 판별하기",
   "intro": "미리 정한 클래스 중 하나를 고르는 분류를 배워요. 로지스틱 회귀, 소프트맥스, 결정 트리로 분류하고, 혼동 행렬과 정밀도·재현율로 평가해요.",
+  "keypoints": ["분류는 미리 정한 클래스 중 하나를 고르는 거예요. 확률이 가장 큰 클래스를 예측해요.", "로지스틱 회귀는 점수 z를 시그모이드로 확률로 바꾸고, 기준값 τ로 클래스를 정해요.", "소프트맥스는 클래스마다의 점수를 서로 경쟁하는 확률로 바꿔요.", "결정 트리는 질문을 차례로 던져 나누고, 지니 불순도로 섞인 정도를 재요.", "정밀도 = TP/(TP+FP), 재현율 = TP/(TP+FN), F1은 둘의 조화 평균이에요."],
   "sources": [
     { "index": "01", "title": "What Is Classification", "file": "01_what_is_classification.ipynb" },
     { "index": "02", "title": "Binary Logistic Regression", "file": "02_binary_logistic_regression.ipynb" },
