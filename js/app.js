@@ -15,6 +15,14 @@ loadWeeks(function () {
   });
 });
 
+// 시험 문항 수·중요도 (과목 index.html에 window.EXAM_INFO가 있을 때만)
+function examBadge(code) {
+  var info = window.EXAM_INFO && window.EXAM_INFO[code];
+  if (!info) return '';
+  return '<span class="exam-badge"><span class="imp ' + info.cls + '">' + esc(info.imp) + '</span>' +
+    (info.n ? '<b>' + info.n + '문항</b>' : '') + '</span>';
+}
+
 function renderWeeks() {
   var box = document.getElementById('weeks');
   if (WEEKS.length === 0) {
@@ -33,7 +41,7 @@ function renderWeeks() {
           (seen ? '<p class="session"><span class="tag ok">봤음</span></p>' : '') +
           w.sessions.map(function (ss) {
             return '<h2><a href="week.html?w=' + w.week + '#' + sid(ss, 'top') + '">' +
-              '<span class="code">' + esc(ss.session) + '</span>' + esc(ss.title) + '</a></h2>';
+              '<span class="code">' + esc(ss.session) + '</span>' + esc(ss.title) + '</a>' + examBadge(ss.session) + '</h2>';
           }).join('') +
           '<p class="muted small">자료 ' + weekItems(w, 'sources').length + '개 · 용어 ' + weekItems(w, 'terms').length + '개 · 퀴즈 ' + s.total + '문제</p>' +
           '<div class="bar" title="맞힌 문제 ' + s.correct + '/' + s.total + '"><i style="width:' + pct + '%"></i></div>' +

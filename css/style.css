@@ -330,3 +330,29 @@ mark.blank {
 @media (prefers-color-scheme: dark) {
   mark.blank { --hl: rgba(250, 204, 21, .22); color: #fcd34d; }
 }
+
+/* 시험 안내 */
+.exam-info { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 4px 16px 8px; }
+.exam-info h2 { font-size: 1.1rem; margin: 12px 0 4px; }
+.table-wrap { overflow-x: auto; }
+.exam-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.exam-table th, .exam-table td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.exam-table td:first-child { white-space: nowrap; font-weight: 600; }
+.exam-table td span.muted { display: block; }
+.exam-table .num { text-align: center; }
+.exam-table tfoot td { font-weight: 700; border-bottom: 0; }
+.imp { font-size: .75rem; font-weight: 700; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+.imp-top { background: var(--accent); color: #fff; }
+.imp-hi { background: var(--accent-soft); color: var(--accent); }
+.imp-lo { border: 1px solid var(--line); color: var(--muted); }
+.imp-out { color: var(--muted); }
+.exam-table td.num { white-space: nowrap; text-align: right; }
+.exam-table th.num { text-align: right; }
+.exam-table .cnt { font-weight: 700; margin-right: 6px; }
+.week-body h2 { display: flex; align-items: baseline; gap: 8px; }
+.week-body h2 a { flex: 1; min-width: 0; }
+.exam-badge { flex: none; display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; white-space: nowrap; }
+.imp-mid { background: var(--accent-soft); color: var(--muted); border: 1px solid var(--line); }
+.exam-tag { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; margin-left: 6px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
+.exam-tag .cnt { color: var(--muted); }
+.part .exam-tag { margin-right: auto; }

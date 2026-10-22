@@ -45,12 +45,12 @@ function renderSession(ss) {
   return '<section class="session-block">' +
     '<header class="session-head" id="' + sid(ss, 'top') + '">' +
       '<p class="session">' + esc(ss.session) + (ss.kind ? ' · ' + esc(ss.kind) : '') + '</p>' +
-      '<h2>' + esc(ss.title) + '</h2>' +
+      '<h2>' + esc(ss.title) + examTag(ss.session) + '</h2>' +
       (ss.lecturer ? '<p class="muted small">' + esc(ss.lecturer) + '</p>' : '') +
       '<p>' + esc(ss.intro) + '</p>' +
     '</header>' +
     ss.groups.map(function (g) {
-      return partTitle(sid(ss, g.id), esc(g.title)) +
+      return partTitle(sid(ss, g.id), esc(g.title) + examTag(ss.session + '#' + g.id)) +
         sectionsOf(ss, g.id).map(function (c) { return renderCard(c, ss); }).join('');
     }).join('') +
     partTitle(sid(ss, 'terms'), '용어 정리') +
@@ -65,6 +65,14 @@ function renderSession(ss) {
       return '<li><b>' + esc(src.title) + '</b><br><code>' + esc(src.path || 'materials/week' + pad(ss.week) + '/' + src.file) + '</code></li>';
     }).join('') + '</ol>' +
   '</section>';
+}
+
+// 제목 옆 시험 표시 (data/exam-info.js가 있는 과목만)
+function examTag(key) {
+  var info = window.EXAM_INFO && window.EXAM_INFO[key];
+  if (!info) return '';
+  return ' <span class="exam-tag"><span class="imp ' + info.cls + '">' + esc(info.imp) + '</span>' +
+    '<span class="cnt">' + (info.n ? '시험 ' + info.n + '문항' : '시험 범위 아님') + '</span></span>';
 }
 
 // 큰 제목 + 오른쪽 "↑ 목차" 링크
