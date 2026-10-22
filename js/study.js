@@ -262,12 +262,16 @@ function examBreakdown(results) {
 }
 
 // 틀렸을 때: 문제와 연결된 개념 카드(q.card)를 바로 보여 준다
+// q.card는 '카드id'(그 차시 문제) 또는 '04-1:카드id'(모의고사 문제)
 function findCard(q) {
+  var parts = q.card.split(':');
+  var sess = parts.length > 1 ? parts[0] : null;
+  var cardId = parts[parts.length - 1];
   for (var i = 0; i < WEEKS.length; i++) {
     var ss = WEEKS[i].sessions;
     for (var j = 0; j < ss.length; j++) {
-      if (!(ss[j].quiz || []).some(function (x) { return x.id === q.id; })) continue;
-      var c = (ss[j].sections || []).filter(function (c) { return c.id === q.card; })[0];
+      if (sess ? ss[j].session !== sess : !(ss[j].quiz || []).some(function (x) { return x.id === q.id; })) continue;
+      var c = (ss[j].sections || []).filter(function (c) { return c.id === cardId; })[0];
       return c ? { week: WEEKS[i].week, session: ss[j], card: c } : null;
     }
   }
