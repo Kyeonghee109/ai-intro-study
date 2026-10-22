@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+<rect width="760" height="330" rx="14" fill="#fff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16a34a"/></marker></defs>
+<line x1="70" y1="270" x2="720" y2="270" stroke="#94a3b8"/><line x1="70" y1="270" x2="70" y2="30" stroke="#94a3b8"/>
+<text x="395" y="300" font-size="13" text-anchor="middle" fill="#64748b">가중치 w 값</text>
+<text x="40" y="150" font-size="13" text-anchor="middle" fill="#64748b" transform="rotate(-90 40 150)">손실 (틀린 정도)</text>
+<path d="M100 50 Q400 470 700 50" fill="none" stroke="#6366f1" stroke-width="3"/>
+<g fill="#f59e0b" stroke="#b45309" stroke-width="1.5">
+<circle cx="140" cy="91" r="10"/><circle cx="210" cy="152" r="10"/><circle cx="275" cy="196" r="10"/><circle cx="335" cy="221" r="10"/><circle cx="385" cy="230" r="11" fill="#16a34a" stroke="#166534"/></g>
+<g stroke="#16a34a" stroke-width="2" marker-end="url(#a)"><line x1="152" y1="102" x2="196" y2="140"/><line x1="222" y1="160" x2="261" y2="187"/><line x1="287" y1="202" x2="321" y2="216"/><line x1="347" y1="224" x2="371" y2="228"/></g>
+<text x="150" y="70" font-size="13" fill="#b45309">처음: 많이 틀림</text>
+<line x1="397" y1="225" x2="470" y2="200" stroke="#166534" stroke-width="1"/><text x="474" y="204" font-size="13" font-weight="700" fill="#166534">가장 낮은 곳 = 손실 최소</text>
+<rect x="450" y="70" width="270" height="92" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="465" y="95" font-size="13" fill="#334155">• 기울기 = 지금 서 있는 곳의 경사</text>
+<text x="465" y="120" font-size="13" fill="#334155">• 내리막 쪽으로 한 걸음씩 이동</text>
+<text x="465" y="145" font-size="13" fill="#334155">• 바닥에 가까워질수록 경사가 완만</text>
+</svg>

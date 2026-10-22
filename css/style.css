@@ -356,3 +356,4 @@ mark.blank {
 .exam-tag { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; margin-left: 6px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
 .exam-tag .cnt { color: var(--muted); }
 .part .exam-tag { margin-right: auto; }
+figcaption { font-size: 13px; color: var(--muted, #64748b); margin-top: 4px; }

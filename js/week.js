@@ -111,9 +111,10 @@ function renderCard(s, ss) {
   if (s.table) html += renderTable(s.table);
   if (s.cautions) html += '<div class="caution"><p class="label">주의할 점</p>' + renderList(s.cautions) + '</div>';
   if (s.example) html += renderExample(s.example, s.source);
-  if (s.figure) {
-    html += '<figure><img src="' + esc(s.figure.src) + '" alt="' + esc(s.figure.alt) + '" loading="lazy"></figure>';
-  }
+  (s.figures || (s.figure ? [s.figure] : [])).forEach(function (f) {
+    html += '<figure><img src="' + esc(f.src) + '" alt="' + esc(f.alt) + '" loading="lazy">' +
+      (f.caption ? '<figcaption>' + esc(f.caption) + '</figcaption>' : '') + '</figure>';
+  });
   html += '<p class="keyterms"><span class="label">Key terms</span> ' +
     s.keyterms.map(function (k) {
       return '<span class="kt">' + enOrCheck(k.en) + ' <span class="muted">' + esc(k.ko) + '</span></span>';
