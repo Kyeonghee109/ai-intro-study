@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+<rect width="760" height="360" rx="14" fill="#fff"/>
+<line x1="380" y1="20" x2="380" y2="340" stroke="#e2e8f0" stroke-width="2"/>
+<!-- 과대적합 -->
+<text x="190" y="36" font-size="16" font-weight="700" text-anchor="middle" fill="#334155">과대적합은 검증 세트로 알아내요</text>
+<g transform="translate(60 70)"><line x1="0" y1="200" x2="290" y2="200" stroke="#94a3b8"/><line x1="0" y1="0" x2="0" y2="200" stroke="#94a3b8"/>
+<path d="M5 20 C60 120 150 170 285 185" fill="none" stroke="#2563eb" stroke-width="3"/>
+<path d="M5 30 C60 120 110 140 150 138 S240 90 285 50" fill="none" stroke="#dc2626" stroke-width="3"/>
+<line x1="150" y1="0" x2="150" y2="200" stroke="#16a34a" stroke-dasharray="5 4" stroke-width="2"/>
+<text x="150" y="-6" font-size="12" font-weight="700" text-anchor="middle" fill="#16a34a">여기가 가장 좋아요</text>
+<text x="285" y="215" font-size="12" text-anchor="end" fill="#2563eb">학습 데이터 손실: 계속 ↓</text>
+<text x="280" y="42" font-size="12" text-anchor="end" fill="#dc2626">검증 데이터 손실: 다시 ↑</text>
+<text x="235" y="140" font-size="12" text-anchor="middle" fill="#dc2626">과대적합 구간</text>
+<text x="60" y="222" font-size="12" text-anchor="middle" fill="#64748b">학습 횟수 →</text><text x="-8" y="100" font-size="12" text-anchor="end" fill="#64748b">손실</text></g>
+<text x="190" y="325" font-size="12" text-anchor="middle" fill="#334155">학습 데이터만 외워서, 처음 보는 데이터는 오히려 더 틀려요</text>
+<!-- 지역 최솟값 -->
+<text x="570" y="36" font-size="16" font-weight="700" text-anchor="middle" fill="#334155">지역 최솟값에 갇힐 수 있어요</text>
+<path d="M410 70 C440 70 450 170 490 170 C525 170 525 120 555 120 C600 120 610 260 650 260 C690 260 700 120 730 90" fill="none" stroke="#6366f1" stroke-width="3"/>
+<circle cx="428" cy="80" r="7" fill="#f59e0b" stroke="#b45309"/><circle cx="490" cy="161" r="8" fill="#f59e0b" stroke="#b45309"/>
+<text x="490" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#b45309">여기서 멈춤</text>
+<text x="490" y="216" font-size="12" text-anchor="middle" fill="#b45309">(지역 최솟값)</text>
+<circle cx="722" cy="102" r="7" fill="#22c55e" stroke="#166534"/><circle cx="650" cy="251" r="8" fill="#22c55e" stroke="#166534"/>
+<text x="650" y="290" font-size="12" font-weight="700" text-anchor="middle" fill="#166534">진짜 가장 낮은 곳</text>
+<text x="428" y="62" font-size="11" text-anchor="middle" fill="#b45309">시작점 A</text><text x="722" y="84" font-size="11" text-anchor="middle" fill="#166534">시작점 B</text>
+<text x="570" y="325" font-size="12" text-anchor="middle" fill="#334155">시작점(초기화)을 바꿔 여러 번 학습해 보면 더 낮은 곳을 찾을 수 있어요</text>
+</svg>

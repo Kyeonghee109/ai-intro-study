@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+<rect width="760" height="400" rx="14" fill="#fff"/>
+<defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#dc2626"/></marker>
+<marker id="k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker></defs>
+<line x1="380" y1="20" x2="380" y2="380" stroke="#e2e8f0" stroke-width="2"/>
+<!-- 왼쪽: 너무 큼 -->
+<text x="190" y="36" font-size="16" font-weight="700" text-anchor="middle" fill="#dc2626">학습률이 너무 클 때</text>
+<path d="M40 60 Q190 330 340 60" fill="none" stroke="#6366f1" stroke-width="3"/>
+<g fill="#f59e0b" stroke="#b45309"><circle cx="150" cy="168" r="8"/><circle cx="250" cy="155" r="8"/><circle cx="110" cy="122" r="8"/><circle cx="305" cy="100" r="8"/></g>
+<g stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#m)"><path d="M158 160 Q200 110 242 150"/><path d="M242 150 Q180 70 118 116"/><path d="M118 116 Q210 20 297 94"/></g>
+<text x="190" y="225" font-size="13" text-anchor="middle" fill="#334155">한 걸음이 너무 커서 바닥을 넘어가 버려요</text>
+<text x="190" y="243" font-size="13" text-anchor="middle" fill="#334155">→ 갈수록 더 높이 튕겨 나가요</text>
+<g transform="translate(70 255)"><line x1="0" y1="100" x2="240" y2="100" stroke="#94a3b8"/><line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8"/>
+<path d="M0 70 C60 66 110 50 150 30 S220 2 235 0" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="120" y="118" font-size="12" text-anchor="middle" fill="#64748b">학습 횟수 →</text><text x="-8" y="50" font-size="12" text-anchor="end" fill="#64748b">손실</text>
+<text x="150" y="60" font-size="12" font-weight="700" fill="#dc2626">시작하자마자 손실 ↑</text></g>
+<!-- 오른쪽: 너무 작음 -->
+<text x="570" y="36" font-size="16" font-weight="700" text-anchor="middle" fill="#d97706">학습률이 너무 작을 때</text>
+<path d="M420 60 Q570 330 720 60" fill="none" stroke="#6366f1" stroke-width="3"/>
+<g fill="#f59e0b" stroke="#b45309"><circle cx="446" cy="96" r="6"/><circle cx="458" cy="111" r="6"/><circle cx="470" cy="125" r="6"/><circle cx="482" cy="138" r="6"/></g>
+<circle cx="570" cy="195" r="7" fill="#fff" stroke="#16a34a" stroke-width="2" stroke-dasharray="3 2"/>
+<text x="570" y="216" font-size="12" text-anchor="middle" fill="#16a34a">↑ 바닥은 아직 멀어요</text>
+<text x="570" y="243" font-size="13" text-anchor="middle" fill="#334155">한 걸음이 너무 작아서 바닥까지 한참 걸려요</text>
+<g transform="translate(450 255)"><line x1="0" y1="100" x2="240" y2="100" stroke="#94a3b8"/><line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8"/>
+<path d="M0 20 C60 24 140 27 235 29" fill="none" stroke="#d97706" stroke-width="3"/>
+<text x="120" y="118" font-size="12" text-anchor="middle" fill="#64748b">학습 횟수 →</text><text x="-8" y="50" font-size="12" text-anchor="end" fill="#64748b">손실</text>
+<text x="120" y="55" font-size="12" font-weight="700" text-anchor="middle" fill="#d97706">손실이 거의 그대로 (정체)</text></g>
+</svg>
