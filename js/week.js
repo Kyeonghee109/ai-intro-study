@@ -20,6 +20,7 @@ loadWeeks(function () {
         '<a class="btn" href="study.html?w=' + w.week + '&mode=quiz">퀴즈 풀기</a>' +
       '</div>' +
     '</section>' +
+    renderKeypoints(w) +
     renderToc(w) +
     w.sessions.map(renderSession).join('');
 
@@ -48,7 +49,6 @@ function renderSession(ss) {
       '<h2>' + esc(ss.title) + examTag(ss.session) + '</h2>' +
       (ss.lecturer ? '<p class="muted small">' + esc(ss.lecturer) + '</p>' : '') +
       '<p>' + esc(ss.intro) + '</p>' +
-      (ss.keypoints ? '<div class="keypoints"><p class="label">핵심 정리</p>' + renderList(ss.keypoints) + '</div>' : '') +
     '</header>' +
     ss.groups.map(function (g) {
       return partTitle(sid(ss, g.id), esc(g.title) + examTag(ss.session + '#' + g.id)) +
@@ -83,6 +83,16 @@ function partTitle(id, html) {
 
 function sectionsOf(ss, groupId) {
   return ss.sections.filter(function (c) { return c.group === groupId; });
+}
+
+// 핵심 정리: 목차 위. 차시가 여럿이면 차시 번호로 나눠 보여 준다.
+function renderKeypoints(w) {
+  var list = w.sessions.filter(function (ss) { return ss.keypoints; });
+  if (!list.length) return '';
+  return '<section class="keypoints"><p class="label">핵심 정리</p>' + list.map(function (ss) {
+    return (list.length > 1 ? '<p class="kp-session">' + esc(ss.session) + ' ' + esc(ss.title) + '</p>' : '') +
+      renderList(ss.keypoints);
+  }).join('') + '</section>';
 }
 
 function renderToc(w) {
