@@ -1136,8 +1136,8 @@ addSession({
   ],
   "quiz": [
     {
-      "id": "w04-q01",
-      "q": "In gradient descent, if the gradient of a variable is positive, what happens to that variable in the next update?",
+      "id": "w04-q01", "card": "gd",
+      "q": "In gradient descent, if the gradient of a variable is positive, what happens to that variable in the next update?", "q_ko": "경사하강법에서 어떤 변수의 경사가 양수면, 다음 업데이트에서 그 변수는 어떻게 되나요?", "choices_ko": ["줄어요", "늘어요", "그대로예요", "무작위로 바뀌어요"],
       "choices": [
         "It decreases",
         "It increases",
@@ -1149,8 +1149,8 @@ addSession({
       "source": "02-1_gradient_descent_concept.ipynb"
     },
     {
-      "id": "w04-q02",
-      "q": "Which is the gradient descent update rule?",
+      "id": "w04-q02", "card": "gd",
+      "q": "Which is the gradient descent update rule?", "q_ko": "경사하강법의 업데이트 식은?", "choices_ko": ["다음 값 = 현재 값 − 스텝 크기 × 경사", "다음 값 = 현재 값 + 스텝 크기 × 경사", "다음 값 = 스텝 크기 × 경사", "다음 값 = 현재 값 × 경사 − 스텝 크기"],
       "choices": [
         "Next value = current value − step size × gradient",
         "Next value = current value + step size × gradient",
@@ -1162,8 +1162,8 @@ addSession({
       "source": "02-1_gradient_descent_concept.ipynb"
     },
     {
-      "id": "w04-q03",
-      "q": "What can happen if the step size is very large?",
+      "id": "w04-q03", "card": "step-size",
+      "q": "What can happen if the step size is very large?", "q_ko": "스텝 크기가 아주 크면 어떻게 될 수 있나요?", "choices_ko": ["최솟값을 지나쳐서 비용이 오히려 커질 수 있어요", "진행이 느려져요", "항상 전역 최솟값에 도착해요", "경사를 더 이상 계산할 수 없어요"],
       "choices": [
         "It can overshoot the minimum and increase the cost",
         "Progress becomes slow",
@@ -1175,8 +1175,8 @@ addSession({
       "source": "02-1_gradient_descent_concept.ipynb"
     },
     {
-      "id": "w04-q04",
-      "q": "Which method computes the gradient using derivatives?",
+      "id": "w04-q04", "card": "gd",
+      "q": "Which method computes the gradient using derivatives?", "q_ko": "미분으로 경사를 계산하는 방법은?", "choices_ko": ["경사하강법 (GD)", "유전 알고리즘 (GA)", "입자군집최적화 (PSO)", "셋 다 미분이 필요 없어요"],
       "choices": [
         "Gradient descent (GD)",
         "Genetic algorithm (GA)",
@@ -1188,8 +1188,8 @@ addSession({
       "source": "02-1_gradient_descent_concept.ipynb"
     },
     {
-      "id": "w04-q05",
-      "q": "In the projectile landing demo, the ball lands short of the target. What does GD do?",
+      "id": "w04-q05", "card": "gd",
+      "q": "In the projectile landing demo, the ball lands short of the target. What does GD do?", "q_ko": "발사체 착지 데모에서 공이 목표보다 짧게 떨어졌어요. 경사하강법은 어떻게 하나요?", "choices_ko": ["발사 속도를 높여요", "발사 속도를 낮춰요", "발사 각도를 바꿔요", "목표를 옮겨요"],
       "choices": [
         "Increases the launch speed",
         "Decreases the launch speed",
@@ -1201,8 +1201,8 @@ addSession({
       "source": "02-2_gradient_descent_demo.ipynb"
     },
     {
-      "id": "w04-q06",
-      "q": "With elitism and a fixed evaluation criterion, which statement is true?",
+      "id": "w04-q06", "card": "fitness",
+      "q": "With elitism and a fixed evaluation criterion, which statement is true?", "q_ko": "엘리트 보존을 쓰고 평가 기준이 고정돼 있을 때 맞는 말은?", "choices_ko": ["최고 적합도는 떨어질 수 없어요", "집단의 평균 적합도는 항상 올라요", "자식은 항상 부모보다 나아요", "전역 최적해가 보장돼요"],
       "choices": [
         "The best fitness cannot decrease",
         "Average population fitness always increases",
@@ -1214,8 +1214,8 @@ addSession({
       "source": "03-1_genetic_algorithm_concept.ipynb"
     },
     {
-      "id": "w04-q07",
-      "q": "Which describes crossover in a genetic algorithm?",
+      "id": "w04-q07", "card": "ga-operators",
+      "q": "Which describes crossover in a genetic algorithm?", "q_ko": "유전 알고리즘의 교차를 설명한 것은?", "choices_ko": ["한 부모의 앞부분과 다른 부모의 나머지 부분을 합쳐 자식을 만들어요", "유전자 하나하나를 무작위로 바꿔요", "가장 좋은 후보를 그대로 다음 세대에 복사해요", "작은 무작위 후보 묶음에서 더 나은 부모를 골라요"],
       "choices": [
         "Combine the first part of one parent with the remaining part of another to form an offspring",
         "Randomly change individual genes",
@@ -1227,8 +1227,8 @@ addSession({
       "source": "03-1_genetic_algorithm_concept.ipynb"
     },
     {
-      "id": "w04-q08",
-      "q": "In the swing control demo, how many genes does each chromosome contain?",
+      "id": "w04-q08", "card": "chromosome",
+      "q": "In the swing control demo, how many genes does each chromosome contain?", "q_ko": "그네 제어 데모에서 염색체 하나에는 유전자가 몇 개 있나요?", "choices_ko": ["16", "8", "121", "2"],
       "choices": [
         "16",
         "8",
@@ -1240,8 +1240,8 @@ addSession({
       "source": "03-2_genetic_algorithm_demo.ipynb"
     },
     {
-      "id": "w04-q09",
-      "q": "In the swing example, what does a mutation do?",
+      "id": "w04-q09", "card": "ga-operators",
+      "q": "In the swing example, what does a mutation do?", "q_ko": "그네 예시에서 변이는 무엇을 하나요?", "choices_ko": ["미는 방향을 반대로 바꿔요", "힘의 크기를 키워요", "시뮬레이션 시간을 늘려요", "그네의 처음 상태를 바꿔요"],
       "choices": [
         "It reverses a push direction",
         "It increases the force magnitude",
@@ -1253,8 +1253,8 @@ addSession({
       "source": "03-1_genetic_algorithm_concept.ipynb"
     },
     {
-      "id": "w04-q10",
-      "q": "In PSO, what is pbest?",
+      "id": "w04-q10", "card": "best-positions",
+      "q": "In PSO, what is pbest?", "q_ko": "PSO에서 pbest란?", "choices_ko": ["입자 하나가 지금까지 가 본 가장 좋은 위치", "무리 전체에서 어떤 입자든 찾은 가장 좋은 위치", "입자의 현재 속도", "탐색 공간의 중심"],
       "choices": [
         "The best position that a particle has visited",
         "The best position found by any particle in the swarm",
@@ -1266,8 +1266,8 @@ addSession({
       "source": "04-1_particle_swarm_optimization_concept.ipynb"
     },
     {
-      "id": "w04-q11",
-      "q": "In the PSO velocity update, which term attracts the particle toward gbest?",
+      "id": "w04-q11", "card": "velocity-update",
+      "q": "In the PSO velocity update, which term attracts the particle toward gbest?", "q_ko": "PSO 속도 업데이트에서 입자를 gbest 쪽으로 끌어당기는 항은?", "choices_ko": ["사회항", "인지항", "관성항", "스텝 크기"],
       "choices": [
         "Social term",
         "Cognitive term",
@@ -1279,8 +1279,8 @@ addSession({
       "source": "04-1_particle_swarm_optimization_concept.ipynb"
     },
     {
-      "id": "w04-q12",
-      "q": "Which statement about PSO progress is true?",
+      "id": "w04-q12", "card": "pso",
+      "q": "Which statement about PSO progress is true?", "q_ko": "PSO 진행에 대해 맞는 말은?", "choices_ko": ["기록된 최고 비용은 커질 수 없지만, 현재 입자들의 평균 비용은 커질 수 있어요", "현재 입자들의 평균 비용은 항상 줄어요", "무리가 모이면 전역 최적해가 보장돼요", "입자의 위치는 드론의 실제 움직임을 나타내요"],
       "choices": [
         "The best recorded cost cannot increase, but the average cost of current particles can increase",
         "The average cost of current particles always decreases",
@@ -1292,8 +1292,8 @@ addSession({
       "source": "04-1_particle_swarm_optimization_concept.ipynb"
     },
     {
-      "id": "w04-q13",
-      "q": "In the drone altitude control demo, what are the decision variables?",
+      "id": "w04-q13", "card": "decision-variable",
+      "q": "In the drone altitude control demo, what are the decision variables?", "q_ko": "드론 고도 제어 데모에서 결정변수는?", "choices_ko": ["비례 이득 Kp와 미분 이득 Kd", "목표 고도와 처음 속도", "외란과 처음 고도", "드론의 수평 위치"],
       "choices": [
         "The proportional gain Kp and the derivative gain Kd",
         "The target altitude and the initial velocity",
@@ -1305,8 +1305,8 @@ addSession({
       "source": "04-2_particle_swarm_optimization_demo.ipynb"
     },
     {
-      "id": "w04-q14",
-      "q": "In the classroom cooling example, which candidates are infeasible?",
+      "id": "w04-q14", "card": "constraints",
+      "q": "In the classroom cooling example, which candidates are infeasible?", "q_ko": "교실 냉방 예시에서 실행 불가능한 후보는?", "choices_ko": ["30 °C를 넘는 후보", "25 °C인 후보", "에너지 가중치가 큰 후보", "격자점 사이에 있는 후보"],
       "choices": [
         "Candidates that exceed 30 °C",
         "Candidates at 25 °C",
@@ -1318,8 +1318,8 @@ addSession({
       "source": "01_what_is_optimization.ipynb"
     },
     {
-      "id": "w04-q15",
-      "q": "In the classroom cooling example, what happens when the energy weight is changed?",
+      "id": "w04-q15", "card": "objective-function",
+      "q": "In the classroom cooling example, what happens when the energy weight is changed?", "q_ko": "교실 냉방 예시에서 에너지 가중치를 바꾸면 어떻게 되나요?", "choices_ko": ["후보들의 온도 변화는 그대로인데 순위가 바뀔 수 있어요", "모든 후보의 온도 변화가 바뀌어요", "실행 불가능한 후보가 가능해져요", "격자 후보 수가 늘어요"],
       "choices": [
         "Candidate rankings can change without changing their temperature trajectories",
         "The temperature trajectories of all candidates change",
@@ -1331,8 +1331,8 @@ addSession({
       "source": "01_what_is_optimization.ipynb"
     },
     {
-      "id": "w04-q16",
-      "q": "In the classroom cooling example, what is the state variable?",
+      "id": "w04-q16", "card": "state-variable",
+      "q": "In the classroom cooling example, what is the state variable?", "q_ko": "교실 냉방 예시에서 상태변수는?", "choices_ko": ["실내 온도", "초반 냉방 세기", "후반 냉방 세기", "에너지 가중치"],
       "choices": [
         "Indoor temperature",
         "The early cooling level",
@@ -1344,8 +1344,8 @@ addSession({
       "source": "01_what_is_optimization.ipynb"
     },
     {
-      "id": "w04-q17",
-      "q": "Which statement about grid search is true?",
+      "id": "w04-q17", "card": "grid-search",
+      "q": "Which statement about grid search is true?", "q_ko": "격자 탐색에 대해 맞는 말은?", "choices_ko": ["미리 정한 후보를 평가하므로, 더 좋은 해가 격자점 사이에 있을 수 있어요", "항상 진짜 최적해를 찾아요", "경사로 새 후보를 골라요", "탐색이 커져도 비용이 늘지 않아요"],
       "choices": [
         "It evaluates predefined candidates, and better solutions may lie between grid points",
         "It always finds the true optimum",
@@ -1357,8 +1357,8 @@ addSession({
       "source": "01_what_is_optimization.ipynb"
     },
     {
-      "id": "w04-q18",
-      "q": "In the classroom model, what lies outside the system boundary?",
+      "id": "w04-q18", "card": "system-boundary",
+      "q": "In the classroom model, what lies outside the system boundary?", "q_ko": "교실 모델에서 시스템 경계 밖에 있는 것은?", "choices_ko": ["문과 창문 열기", "바깥 온도", "재실 인원", "냉방 세기"],
       "choices": [
         "Door and window opening",
         "Outdoor temperature",

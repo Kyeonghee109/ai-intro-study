@@ -136,7 +136,8 @@ function startQuiz(questions) {
       '<article class="card quiz">' +
         (q.cat ? '<p class="muted small">' + catLabel(q.cat) + '</p>' : '') +
         (q.answers ? '<p class="muted small"><span class="tag">주관식</span></p>' : '') +
-        '<h3>' + esc(plain(q.q)) + '</h3>';
+        '<h3>' + esc(plain(q.q)) + '</h3>' +
+        (q.q_ko ? '<p class="ko-sub">' + esc(q.q_ko) + '</p>' : '');
 
     // 주관식: 답을 직접 써 본다 (answers = 정답으로 인정할 말 목록)
     if (q.answers) {
@@ -162,7 +163,8 @@ function startQuiz(questions) {
     var order = shuffle(q.choices.map(function (_, i) { return i; }));
     stage.innerHTML = head +
         '<div class="choices">' + order.map(function (i, n) {
-          return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> ' + esc(plain(q.choices[i])) + '</button>';
+          return '<button type="button" class="choice" data-i="' + i + '"><b>' + (n + 1) + '</b> <span>' + esc(plain(q.choices[i])) +
+            (q.choices_ko ? '<span class="ko-sub">' + esc(q.choices_ko[i]) + '</span>' : '') + '</span></button>';
         }).join('') + '</div>' +
         '<div id="feedback"></div>' +
       '</article>';
@@ -202,6 +204,7 @@ function startQuiz(questions) {
         esc(q.explain) +
         '<p class="src">출처: ' + esc(q.source) + '</p>' +
       '</div>' +
+      (ok ? '' : conceptBox(q)) +
       // 주관식은 표현이 조금 달라도 맞을 수 있어서 스스로 맞음 처리할 수 있게 한다
       (q.answers && !ok && written && written.trim()
         ? '<button type="button" class="btn ghost" id="selfok">내 답도 맞아요</button> '
@@ -256,4 +259,31 @@ function examBreakdown(results) {
       var ok = mine.filter(function (r) { return r.ok; }).length;
       return '<tr' + (ok < mine.length ? ' class="miss"' : '') + '><td>' + catLabel(c.no) + '</td><td>' + ok + ' / ' + mine.length + '</td></tr>';
     }).join('') + '</table>';
+}
+
+// 틀렸을 때: 문제와 연결된 개념 카드(q.card)를 바로 보여 준다
+function findCard(q) {
+  for (var i = 0; i < WEEKS.length; i++) {
+    var ss = WEEKS[i].sessions;
+    for (var j = 0; j < ss.length; j++) {
+      if (!(ss[j].quiz || []).some(function (x) { return x.id === q.id; })) continue;
+      var c = (ss[j].sections || []).filter(function (c) { return c.id === q.card; })[0];
+      return c ? { week: WEEKS[i].week, session: ss[j], card: c } : null;
+    }
+  }
+  return null;
+}
+
+function conceptBox(q) {
+  var f = q.card && findCard(q);
+  if (!f) return '';
+  var c = f.card;
+  return '<div class="concept">' +
+    '<p class="label">개념 다시 보기 · ' + esc(c.title) + '</p>' +
+    '<p class="concept-def">' + esc(c.definition) + '</p>' +
+    (c.formula ? '<p class="concept-formula">' + esc(c.formula.ko) + '</p>' : '') +
+    (c.points ? '<ul>' + c.points.slice(0, 3).map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' : '') +
+    (c.cautions ? '<ul class="concept-caution">' + c.cautions.map(function (p) { return '<li>⚠ ' + esc(p) + '</li>'; }).join('') + '</ul>' : '') +
+    '<a href="week.html?w=' + f.week + '#' + sid(f.session, c.id) + '" target="_blank" rel="noopener">개념 카드 전체 보기 (그림·표 포함) →</a>' +
+  '</div>';
 }
