@@ -109,6 +109,7 @@ function renderCard(s, ss) {
   if (s.formula) html += renderFormula(s.formula);
   if (s.points) html += '<p class="label">핵심 포인트</p>' + renderList(s.points);
   if (s.table) html += renderTable(s.table);
+  if (s.timeline) html += renderTimeline(s.timeline);
   if (s.cautions) html += '<div class="caution"><p class="label">주의할 점</p>' + renderList(s.cautions) + '</div>';
   if (s.example) html += renderExample(s.example, s.source);
   (s.figures || (s.figure ? [s.figure] : [])).forEach(function (f) {
@@ -139,6 +140,15 @@ function renderFormula(f) {
 
 function renderList(items) {
   return '<ul>' + items.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>';
+}
+
+// 연표: 선 위에 동그라미로 연도 표시. [{ when, what, note }]
+function renderTimeline(items) {
+  return '<ol class="timeline">' + items.map(function (it) {
+    return '<li><span class="tl-dot"></span><span class="tl-when">' + esc(it.when) + '</span>' +
+      '<span class="tl-what">' + esc(it.what) + '</span>' +
+      (it.note ? '<span class="tl-note">' + esc(it.note) + '</span>' : '') + '</li>';
+  }).join('') + '</ol>';
 }
 
 function renderTable(t) {
